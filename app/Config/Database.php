@@ -35,7 +35,7 @@ class Database extends Config
         'hostname' => '.domcloud.io',
         'username' => 'surat-desa-tempuran',
         'password' => '474-LX-Xbnj1a4_ChS',
-        'database' => '',
+        'database' => 'surat_desa_tempuran_db',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
@@ -45,7 +45,7 @@ class Database extends Config
         'swapPre'  => '',
         'encrypt'  => false,
         'compress' => false,
-        'strictOn' => false,
+        'strictOn' => true,
         'failover' => [],
         'port'     => 3306,
     ];
