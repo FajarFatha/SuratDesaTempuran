@@ -32,9 +32,9 @@ class Database extends Config
      */
     public $default = [
         'DSN'      => '',
-        'hostname' => 'localhost',
-        'username' => '',
-        'password' => '',
+        'hostname' => '.domcloud.io',
+        'username' => 'surat-desa-tempuran',
+        'password' => '474-LX-Xbnj1a4_ChS',
         'database' => '',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
