@@ -16,20 +16,20 @@
             <h2 id="judul">Yang Bertanda Tangan</h2>
         </div>
     </div>
-    <
-        <div class="card mb-3" style="max-width: 340px;">
-            <div class="row g-0">
-                <div class="col-md-12">
-                    <div class="card-body">
-                        <h4 class="card-title"><?= $tertanda['nama']; ?></h4>
-                        <p class="card-text"><b>Jabatan : </b> <?= $tertanda['jabatan']; ?></p>
-                        <p class="card-text"><b>Alamat : </b> <?= $tertanda['alamat']; ?></p>
+    </center>
+    <div class="card mb-3" style="max-width: 340px; margin-left:390px">
+        <div class="row g-0">
+            <div class="col-md-12">
+                <div class="card-body">
+                    <h4 class="card-title"><?= $tertanda['nama']; ?></h4>
+                    <p class="card-text"><b>Jabatan : </b> <?= $tertanda['jabatan']; ?></p>
+                    <p class="card-text"><b>Alamat : </b> <?= $tertanda['alamat']; ?></p>
 
-                        <a href="/editttd/<?= $tertanda['id']; ?>" class="btn btn-warning">Edit</a>
-                    </div>
+                    <a href="/editttd/<?= $tertanda['id']; ?>" class="btn btn-warning">Edit</a>
                 </div>
             </div>
         </div>
+    </div>
     </center>
 </div>
 <br>

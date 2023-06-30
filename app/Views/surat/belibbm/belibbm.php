@@ -21,28 +21,28 @@
         <div class="row mb-3">
             <label class="col-sm-3 col-form-label"><b>Nomor Urut Surat </b></label>
             <div class="col-sm-9">
-                <input type="number" class="form-control" id="nourut" name="nourut" value="<?= $surat['nourut']; ?>" required>
+                <input type="number" class="form-control" id="nourut" name="nourut" value="<?= (isset($_SESSION["nourut"])) ? $_SESSION["nourut"] : $surat['nourut']; ?>" required>
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-3 col-form-label"><b>Nama </b></label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" id="inputNama3" name="nama" required>
+                <input type="text" class="form-control" id="inputNama3" name="nama" value="<?= (isset($_SESSION["nama"])) ? $_SESSION["nama"] : "" ?>" required>
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-3 col-form-label"><b>Tempat, Tanggal Lahir</b></label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" value="Ngawi" name="tempat" required>
+                <input type="text" class="form-control" value="<?= (isset($_SESSION["tempat"])) ? $_SESSION["tempat"] : "Ngawi" ?>" name="tempat" required>
             </div>
             <div class="col-sm-5">
-                <input type="date" class="form-control" name="ttl" required>
+                <input type="date" class="form-control" name="ttl" value="<?= (isset($_SESSION["ttl"])) ? $_SESSION["ttl"] : "" ?>" required>
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-3 col-form-label"><b>NIK </b></label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" id="nik" name="nik">
+                <input type="text" class="form-control" id="nik" name="nik" value="<?= (isset($_SESSION["nik"])) ? $_SESSION["nik"] : "" ?>">
             </div>
         </div>
         <div class="row mb-3">
@@ -51,14 +51,14 @@
                 <label for="rt">RT</label>
             </div>
             <div class="col-sm-2">
-                <input type="number" id="rt" placeholder="001" name="rt" required>
+                <input type="number" id="rt" placeholder="001" name="rt" value="<?= (isset($_SESSION["rt"])) ? $_SESSION["rt"] : "" ?>" required>
             </div>
             <div class="col-sm-2"></div>
             <div class="col-sm-1">
                 <label for="rw">RW</label>
             </div>
             <div class="col-sm-2">
-                <input type="number" id="rw" placeholder="001" name="rw" required>
+                <input type="number" id="rw" placeholder="001" name="rw" value="<?= (isset($_SESSION["rw"])) ? $_SESSION["rw"] : "" ?>" required>
             </div>
         </div>
         <div class="row mb-3">
@@ -67,13 +67,13 @@
         <div class="row mb-3">
             <label for="ttdnama" class="col-sm-3 col-form-label"><b>Nama</b> </label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" id="ttdnama" name="ttdnama" value="<?= $tertanda['nama']; ?>" required>
+                <input type="text" class="form-control" id="ttdnama" name="ttdnama" value="<?= (isset($_SESSION["ttdnama"])) ? $_SESSION["ttdnama"] : $tertanda['nama']; ?>" required>
             </div>
         </div>
         <div class="row mb-3">
             <label for="ttdjabatan" class="col-sm-3 col-form-label"><b>Jabatan</b> </label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" id="ttdjabatan" name="ttdjabatan" value="<?= $tertanda['jabatan']; ?>" required>
+                <input type="text" class="form-control" id="ttdjabatan" name="ttdjabatan" value="<?= (isset($_SESSION["ttdjabatan"])) ? $_SESSION["ttdjabatan"] : $tertanda['jabatan']; ?>" required>
             </div>
         </div>
         <div class="row mb-3">

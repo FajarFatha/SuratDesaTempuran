@@ -46,6 +46,9 @@
                     <li class="nav-item">
                         <a class="nav-link <?= $active2; ?>" href="/riwayat">Riwayat Pembuatan</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= $active2; ?>" href="/penduduk">Tambah Data Penduduk</a>
+                    </li>
                     <br>
                     <br>
                     <li class="nav-item">

@@ -34,7 +34,7 @@
                             <td><?= $r['nourut']; ?></td>
                             <td><?= $r['created_at']; ?></td>
                             <td>
-                                <a href="/riwayat/edit/<?= $r['id']; ?>" class="btn btn-warning">Edit</a>
+                                <!-- <a href="/riwayat/edit/<?= $r['id']; ?>" class="btn btn-warning">Edit</a> -->
                                 <form action="/riwayat/delete/<?= $r['id']; ?>" method="post" class="d-inline">
                                     <?= csrf_field(); ?>
                                     <input type="hidden" name="_method" value="DELETE">

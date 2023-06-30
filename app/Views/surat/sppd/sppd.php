@@ -21,91 +21,91 @@
         <div class="row mb-3">
             <label class="col-sm-4 col-form-label"><b>Nomor Urut Surat </b></label>
             <div class="col-sm-8">
-                <input type="number" class="form-control" id="nourut" name="nourut" value="<?= $surat['nourut']; ?>" required>
+                <input type="number" class="form-control" id="nourut" name="nourut" value="<?= (isset($_SESSION["nourut"])) ? $_SESSION["nourut"] : $surat['nourut']; ?>" required>
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-4 col-form-label"><b>Nama </b></label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputNama3" name="nama" required>
+                <input type="text" class="form-control" id="inputNama3" name="nama" value="<?= (isset($_SESSION["nama"])) ? $_SESSION["nama"] : "" ?>" required>
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-4 col-form-label"><b>Jabatan </b></label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" name="jabatan" required>
+                <input type="text" class="form-control" name="jabatan" value="<?= (isset($_SESSION["jabatan"])) ? $_SESSION["jabatan"] : "" ?>" required>
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-4 col-form-label"><b>Pengikut</b></label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" name="pengikut">
+                <input type="text" class="form-control" name="pengikut" value="<?= (isset($_SESSION["pengikut"])) ? $_SESSION["pengikut"] : "" ?>">
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-4 col-form-label"><b>Dari</b></label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" value="Kantor Desa Tempuran" name="dari">
+                <input type="text" class="form-control" value="<?= (isset($_SESSION["dari"])) ? $_SESSION["dari"] : "Kantor Desa Tempuran" ?>" name="dari">
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-4 col-form-label"><b>Ke</b></label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" name="ke" required>
+                <input type="text" class="form-control" name="ke" value="<?= (isset($_SESSION["ke"])) ? $_SESSION["ke"] : "" ?>" required>
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-4 col-form-label"><b>Transportasi yang digunakan</b></label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" name="transportasi">
+                <input type="text" class="form-control" name="transportasi" value="<?= (isset($_SESSION["transportasi"])) ? $_SESSION["transportasi"] : "" ?>">
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-4 col-form-label"><b>Selama</b></label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" value="1 (Satu) hari" name="selama">
+                <input type="text" class="form-control" value="<?= (isset($_SESSION["selama"])) ? $_SESSION["selama"] : "1 (Satu) hari" ?>" name="selama">
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-4 col-form-label"><b>Dari Tanggal</b></label>
             <div class="col-sm-8">
-                <input type="date" class="form-control" name="daritanggal" required>
+                <input type="date" class="form-control" name="daritanggal" value="<?= (isset($_SESSION["daritanggal"])) ? $_SESSION["daritanggal"] : "" ?>" required>
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-4 col-form-label"><b>Maksud mengadakan perjalanan dinas</b></label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" name="maksud" required>
+                <input type="text" class="form-control" name="maksud" value="<?= (isset($_SESSION["maksud"])) ? $_SESSION["maksud"] : "" ?>" required>
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-4 col-form-label"><b>Atas beban Anggaran </b></label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" value="PADES 2022" name="atasbebananggaran">
+                <input type="text" class="form-control" value="<?= (isset($_SESSION["atasbebananggaran"])) ? $_SESSION["atasbebananggaran"] : "PADES 2022" ?>" name="atasbebananggaran">
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-4 col-form-label"><b>Berangkat dari</b></label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" value="Kantor Desa Tempuran" name="berangkatdari">
+                <input type="text" class="form-control" value="<?= (isset($_SESSION["berangkatdari"])) ? $_SESSION["berangkatdari"] : "Kantor Desa Tempuran" ?>" name="berangkatdari">
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-4 col-form-label"><b>Tempat kedudukan </b></label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" value="Kantor Desa Tempuran" name="tempatkedudukan">
+                <input type="text" class="form-control" value="<?= (isset($_SESSION["tempatkedudukan"])) ? $_SESSION["tempatkedudukan"] : "Kantor Desa Tempuran" ?>" name="tempatkedudukan">
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-4 col-form-label"><b>Tempat tujuan </b></label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" name="tepattujuan">
+                <input type="text" class="form-control" name="tepattujuan" value="<?= (isset($_SESSION["tempattujuan"])) ? $_SESSION["tempattujuan"] : "Kantor Desa Tempuran" ?>">
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-4 col-form-label"><b>Kecamatan/Kabupaten Tujuan</b> </label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" name="kecamatankabupaten">
+                <input type="text" class="form-control" name="kecamatankabupaten" value="<?= (isset($_SESSION["kecamatankabupaten"])) ? $_SESSION["kecamatankabupaten"] : "" ?>">
             </div>
         </div>
         <div class="row mb-4">
@@ -114,13 +114,13 @@
         <div class="row mb-3">
             <label for="ttdnama" class="col-sm-4 col-form-label"><b>Nama</b> </label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="ttdnama" name="ttdnama" value="<?= $tertanda['nama']; ?>" required>
+                <input type="text" class="form-control" id="ttdnama" name="ttdnama" value="<?= (isset($_SESSION["ttdnama"])) ? $_SESSION["ttdnama"] : $tertanda['nama']; ?>" required>
             </div>
         </div>
         <div class="row mb-3">
             <label for="ttdjabatan" class="col-sm-4 col-form-label"><b>Jabatan</b> </label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="ttdjabatan" name="ttdjabatan" value="<?= $tertanda['jabatan']; ?>" required>
+                <input type="text" class="form-control" id="ttdjabatan" name="ttdjabatan" value="<?= (isset($_SESSION["ttdjabatan"])) ? $_SESSION["ttdjabatan"] : $tertanda['jabatan']; ?>" required>
             </div>
         </div>
         <div class="row mb-3">

@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="/public/js/script.js"></script> -->
 </head>
 
 <body>
@@ -32,6 +33,7 @@
                 imgPreview.src = e.target.result;
             }
         }
+
     </script>
 
 </body>

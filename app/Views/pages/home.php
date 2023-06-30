@@ -1,5 +1,18 @@
 <?= $this->extend('layout/main'); ?>
 <?= $this->Section('konten'); ?>
+<?php
+$username = $_SESSION['username'];
+$password = $_SESSION['password'];
+session_unset();
+$userModel = new \App\Models\UserModel();
+$dataUser = $userModel->where("username", $username)->first();
+$dataSesi = [
+    'id' => $dataUser['id'],
+    'username' => $dataUser['username'],
+    'password' => $dataUser['password'],
+];
+session()->set($dataSesi);
+?>
 <div class="container">
     <div class="row">
         <div class="col">

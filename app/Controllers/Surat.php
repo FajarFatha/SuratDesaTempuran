@@ -5,17 +5,22 @@ namespace App\Controllers;
 use App\Models\TertandaModel;
 use App\Models\SuratModel;
 use App\Models\RiwayatModel;
+use App\Models\PendudukModel;
+
+// session_start();
 
 class Surat extends BaseController
 {
     protected $TertandaModel;
     protected $SuratModel;
     protected $RiwayatModel;
+    protected $PendudukModel;
     public function __construct()
     {
         $this->TertandaModel = new TertandaModel();
         $this->SuratModel = new SuratModel();
         $this->RiwayatModel = new RiwayatModel();
+        $this->PendudukModel = new PendudukModel();
     }
     public function identitas()
     {
@@ -26,7 +31,8 @@ class Surat extends BaseController
             'active1' => ' ',
             'active2' => ' ',
             'tertanda' => $this->TertandaModel->getTertanda(),
-            'surat' => $this->SuratModel->getSurat($slug)
+            'surat' => $this->SuratModel->getSurat($slug),
+            'penduduk'=> $this->PendudukModel->getPenduduk(),
         ];
         return view('surat/identitas/identitas', $data);
     }
@@ -52,6 +58,7 @@ class Surat extends BaseController
         $nama = $this->request->getVar('nama');
         $tempat = $this->request->getVar('tempat');
         $ttl = $this->request->getVar('ttl');
+        $_SESSION['ttl'] = $ttl;
         $ttld = date('d', strtotime($ttl));
         $ttlm = date('m', strtotime($ttl));
         $ttly = date('Y', strtotime($ttl));
@@ -91,6 +98,22 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION["klasifikasi"] = $klasifikasi;
+        $_SESSION["nourut"] = $nourut;
+        $_SESSION["nama"] = $nama;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['kelamin'] = $kelamin;
+        $_SESSION['agama'] = $agama;
+        $_SESSION['status'] = $status;
+        $_SESSION['pekerjaan'] = $pekerjaan;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['keterangan'] = $keterangan;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -174,6 +197,7 @@ class Surat extends BaseController
         $pekerjaan = $this->request->getVar('pekerjaan');
         $unitkerja = $this->request->getVar('unitkerja');
         $tanggal = $this->request->getVar('tanggal');
+        $_SESSION["tanggal"] = $tanggal;
         date_default_timezone_set('Asia/Jakarta');
         $day = date('D', strtotime($tanggal));
         $dayList = array(
@@ -216,6 +240,22 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION["klasifikasi"] = $klasifikasi;
+        $_SESSION["nourut"] = $nourut;
+        $_SESSION["nama"] = $nama;
+        $_SESSION["tahun"] = $tahun;
+        $_SESSION["kepada"] = $kepada;
+        $_SESSION["jabatan"] = $jabatan;
+        $_SESSION["nip"] = $nip;
+        $_SESSION['pekerjaan'] = $pekerjaan;
+        $_SESSION["unitkerja"] = $unitkerja;
+        $_SESSION["hari"] = $hari;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION["keperluan"] = $keperluan;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -316,6 +356,7 @@ class Surat extends BaseController
         $nama = $this->request->getVar('nama');
         $tempat = $this->request->getVar('tempat');
         $ttl = $this->request->getVar('ttl');
+        $_SESSION['ttl'] = $ttl;
         $ttld = date('d', strtotime($ttl));
         $ttlm = date('m', strtotime($ttl));
         $ttly = date('Y', strtotime($ttl));
@@ -351,6 +392,19 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['nik'] = $nik;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -438,6 +492,7 @@ class Surat extends BaseController
         $nama = $this->request->getVar('nama');
         $tempat = $this->request->getVar('tempat');
         $ttl = $this->request->getVar('ttl');
+        $_SESSION['ttl'] = $ttl;
         $ttld = date('d', strtotime($ttl));
         $ttlm = date('m', strtotime($ttl));
         $ttly = date('Y', strtotime($ttl));
@@ -477,6 +532,23 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['kelamin'] = $kelamin;
+        $_SESSION['agama'] = $agama;
+        $_SESSION['pekerjaan'] = $pekerjaan;
+        $_SESSION['alamatkerja'] = $alamatkerja;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['keperluan'] = $keperluan;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -569,6 +641,7 @@ class Surat extends BaseController
         $nama = $this->request->getVar('nama');
         $tempatlahir = $this->request->getVar('tempatlahir');
         $ttl = $this->request->getVar('ttl');
+        $_SESSION['ttl'] = $ttl;
         $ttld = date('d', strtotime($ttl));
         $ttlm = date('m', strtotime($ttl));
         $ttly = date('Y', strtotime($ttl));
@@ -603,9 +676,11 @@ class Surat extends BaseController
             'Sat' => 'Sabtu'
         );
         $mulai = $this->request->getVar('mulai');
+        $_SESSION['mulai'] = $mulai;
         $harimulai = date('D', strtotime($mulai));
         $harimulai = $dayList[$harimulai];
         $selesai = $this->request->getVar('selesai');
+        $_SESSION['selesai'] = $selesai;
         $hariselesai = date('D', strtotime($selesai));
         $hariselesai = $dayList[$hariselesai];
         $tglmulai = date('d', strtotime($mulai));
@@ -627,6 +702,26 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['tempatlahir'] = $tempatlahir;
+        $_SESSION['pekerjaan'] = $pekerjaan;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['harimulai'] = $harimulai;
+        $_SESSION['hariselesai'] = $hariselesai;
+        $_SESSION['tglmulai'] = $tglmulai;
+        $_SESSION['tglselesai'] = $tglselesai;
+        $_SESSION['hiburan'] = $hiburan;
+        $_SESSION['keperluan'] = $keperluan;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -753,9 +848,11 @@ class Surat extends BaseController
             'Sat' => 'Sabtu'
         );
         $mulai = $this->request->getVar('mulai');
+        $_SESSION['mulai'] = $mulai;
         $harimulai = date('D', strtotime($mulai));
         $harimulai = $dayList[$harimulai];
         $selesai = $this->request->getVar('selesai');
+        $_SESSION['selesai'] = $selesai;
         $hariselesai = date('D', strtotime($selesai));
         $hariselesai = $dayList[$hariselesai];
         $tglmulai = date('d', strtotime($mulai));
@@ -775,6 +872,26 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['umur'] = $umur;
+        $_SESSION['pekerjaan'] = $pekerjaan;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['keramaian'] = $keramaian;
+        $_SESSION['keperluan'] = $keperluan;
+        $_SESSION['harimulai'] = $harimulai;
+        $_SESSION['hariselesai'] = $hariselesai;
+        $_SESSION['tglmulai'] = $tglmulai;
+        $_SESSION['tglselesai'] = $tglselesai;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -870,6 +987,7 @@ class Surat extends BaseController
         $kelamin = $this->request->getVar('kelamin');
         $tempat = $this->request->getVar('tempat');
         $ttl = $this->request->getVar('ttl');
+        $_SESSION['ttl'] = $ttl;
         $ttld = date('d', strtotime($ttl));
         $ttlm = date('m', strtotime($ttl));
         $ttly = date('Y', strtotime($ttl));
@@ -907,6 +1025,21 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['kelamin'] = $kelamin;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['agama'] = $agama;
+        $_SESSION['status'] = $status;
+        $_SESSION['pekerjaan'] = $pekerjaan;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -1030,6 +1163,19 @@ class Surat extends BaseController
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
 
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['didirikan'] = $didirikan;
+        $_SESSION['tahundidirikan'] = $tahundidirikan;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
+        $_SESSION['ttdalamat'] = $ttdalamat;
+
         require_once '../vendor/autoload.php';
 
 
@@ -1117,6 +1263,7 @@ class Surat extends BaseController
         $nama = $this->request->getVar('nama');
         $tempat = $this->request->getVar('tempat');
         $ttl = $this->request->getVar('ttl');
+        $_SESSION['ttl'] = $ttl;
         $ttld = date('d', strtotime($ttl));
         $ttlm = date('m', strtotime($ttl));
         $ttly = date('Y', strtotime($ttl));
@@ -1155,6 +1302,22 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
+        $_SESSION['ttdalamat'] = $ttdalamat;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['nik'] = $nik;
+        $_SESSION['status'] = $status;
+        $_SESSION['pekerjaan'] = $pekerjaan;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['date'] = $date;
 
         require_once '../vendor/autoload.php';
 
@@ -1201,7 +1364,7 @@ class Surat extends BaseController
         ]);
 
         $data = [
-            'title' => 'identitas',
+            'title' => 'domisili',
             'active' => 'active',
             'active1' => ' ',
             'active2' => ' '
@@ -1248,6 +1411,7 @@ class Surat extends BaseController
         $nik = $this->request->getVar('nik');
         $tempat = $this->request->getVar('tempat');
         $ttl = $this->request->getVar('ttl');
+        $_SESSION['ttl'] = $ttl;
         $ttld = date('d', strtotime($ttl));
         $ttlm = date('m', strtotime($ttl));
         $ttly = date('Y', strtotime($ttl));
@@ -1275,6 +1439,7 @@ class Surat extends BaseController
         $namabarang = $this->request->getVar('namabarang');
         $hilangdi = $this->request->getVar('hilangdi');
         $tanggal = $this->request->getVar('tanggal');
+        $_SESSION['tanggal'] = $tanggal;
         $dayList = array(
             'Sun' => 'Minggu',
             'Mon' => 'Senin',
@@ -1302,6 +1467,24 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['nik'] = $nik;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['pekerjaan'] = $pekerjaan;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['namabarang'] = $namabarang;
+        $_SESSION['hilangdi'] = $hilangdi;
+        $_SESSION['hari'] = $hari;
+        $_SESSION['jam'] = $jam;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -1406,6 +1589,7 @@ class Surat extends BaseController
         $nama = $this->request->getVar('nama');
         $tempat = $this->request->getVar('tempat');
         $ttl = $this->request->getVar('ttl');
+        $_SESSION['ttl'] = $ttl;
         $hari = date('D', strtotime($ttl));
         $hari = $dayList[$hari];
         $ttld = date('d', strtotime($ttl));
@@ -1441,6 +1625,7 @@ class Surat extends BaseController
         }
         $tempatibu = $this->request->getVar('tempatibu');
         $ttlibu = $this->request->getVar('ttlibu');
+        $_SESSION['ttlibu'] = $ttlibu;
         if ($ttlibu == '' and ($tempatibu == '' or $tempatibu == '-')) {
             $ttlibu = '-';
         } else if ($ttlibu != '' and ($tempatibu == '' or $tempatibu == '-')) {
@@ -1475,6 +1660,7 @@ class Surat extends BaseController
         }
         $tempatayah = $this->request->getVar('tempatayah');
         $ttlayah = $this->request->getVar('ttlayah');
+        $_SESSION['ttlayah'] = $ttlayah;
         if ($ttlayah == '' and ($tempatayah == '' or $tempatayah == '-')) {
             $ttlayah = '-';
         } else if ($ttlayah != '' and ($tempatayah == '' or $tempatayah == '-')) {
@@ -1515,6 +1701,29 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['hari'] = $hari;
+        $_SESSION['anakke'] = $anakke;
+        $_SESSION['kelamin'] = $kelamin;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['namaibu'] = $namaibu;
+        $_SESSION['bangsaagamaibu'] = $bangsaagamaibu;
+        $_SESSION['pekerjaanibu'] = $pekerjaanibu;
+        $_SESSION['alamatibu'] = $alamatibu;
+        $_SESSION['namaayah'] = $namaayah;
+        $_SESSION['bangsaagamaayah'] = $bangsaagamaayah;
+        $_SESSION['pekerjaanayah'] = $pekerjaanayah;
+        $_SESSION['alamatayah'] = $alamatayah;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -1628,6 +1837,7 @@ class Surat extends BaseController
             $tempat = '-';
         }
         $ttl = $this->request->getVar('ttl');
+        $_SESSION['ttl'] = $ttl;
         if ($ttl == '') {
             $umur = $this->request->getVar('umur');
             $ttl = "$umur Tahun";
@@ -1660,6 +1870,7 @@ class Surat extends BaseController
             $dusun = '...';
         }
         $tglkematian = $this->request->getVar('tglkematian');
+        $_SESSION['tglkematian'] = $tglkematian;
         $tglkematiand = date('d', strtotime($tglkematian));
         $tglkematianm = date('m', strtotime($tglkematian));
         $tglkematiany = date('Y', strtotime($tglkematian));
@@ -1679,6 +1890,24 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['kelamin'] = $kelamin;
+        $_SESSION['kwn'] = $kwn;
+        $_SESSION['agama'] = $agama;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['hari'] = $hari;
+        $_SESSION['tempatkematian'] = $tempatkematian;
+        $_SESSION['sebabkematian'] = $sebabkematian;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -1773,6 +2002,7 @@ class Surat extends BaseController
         $nama = $this->request->getVar('nama');
         $tempat = $this->request->getVar('tempat');
         $ttl = $this->request->getVar('ttl');
+        $_SESSION['ttl'] = $ttl;
         $ttld = date('d', strtotime($ttl));
         $ttlm = date('m', strtotime($ttl));
         $ttly = date('Y', strtotime($ttl));
@@ -1810,6 +2040,21 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['status'] = $status;
+        $_SESSION['pekerjaan'] = $pekerjaan;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['keterangan'] = $keterangan;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -1901,6 +2146,7 @@ class Surat extends BaseController
         $kelamin = $this->request->getVar('kelamin');
         $tempat = $this->request->getVar('tempat');
         $ttl = $this->request->getVar('ttl');
+        $_SESSION['ttl'] = $ttl;
         $ttld = date('d', strtotime($ttl));
         $ttlm = date('m', strtotime($ttl));
         $ttly = date('Y', strtotime($ttl));
@@ -1963,6 +2209,27 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['kelamin'] = $kelamin;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['status'] = $status;
+        $_SESSION['agama'] = $agama;
+        $_SESSION['kebangsaan'] = $kebangsaan;
+        $_SESSION['pekerjaan'] = $pekerjaan;
+        $_SESSION['nik'] = $nik;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['untuk'] = $untuk;
+        $_SESSION['mulai'] = $mulai;
+        $_SESSION['sampai'] = $sampai;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -2061,6 +2328,7 @@ class Surat extends BaseController
         $kelamin = $this->request->getVar('kelamin');
         $tempat = $this->request->getVar('tempat');
         $ttl = $this->request->getVar('ttl');
+        $_SESSION['ttl'] = $ttl;
         $ttld = date('d', strtotime($ttl));
         $ttlm = date('m', strtotime($ttl));
         $ttly = date('Y', strtotime($ttl));
@@ -2092,6 +2360,7 @@ class Surat extends BaseController
         $kelaminanak = $this->request->getVar('kelaminanak');
         $tempatanak = $this->request->getVar('tempatanak');
         $ttlanak = $this->request->getVar('ttlanak');
+        $_SESSION['ttlanak'] = $ttlanak;
         $ttlanakd = date('d', strtotime($ttlanak));
         $ttlanakm = date('m', strtotime($ttlanak));
         $ttlanaky = date('Y', strtotime($ttlanak));
@@ -2128,6 +2397,31 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['kelamin'] = $kelamin;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['status'] = $status;
+        $_SESSION['pekerjaan'] = $pekerjaan;
+        $_SESSION['kwn'] = $kwn;
+        $_SESSION['agama'] = $agama;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['namaanak'] = $namaanak;
+        $_SESSION['kelaminanak'] = $kelaminanak;
+        $_SESSION['tempatanak'] = $tempatanak;
+        $_SESSION['pekerjaananak'] = $pekerjaananak;
+        $_SESSION['rtanak'] = $rtanak;
+        $_SESSION['rwanak'] = $rwanak;
+        $_SESSION['dusunanak'] = $dusunanak;
+        $_SESSION['keterangan'] = $keterangan;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -2236,6 +2530,7 @@ class Surat extends BaseController
         $transportasi = $this->request->getVar('transportasi');
         $selama = $this->request->getVar('selama');
         $daritanggal = $this->request->getVar('daritanggal');
+        $_SESSION['daritanggal'] = $daritanggal;
         $daritanggald = date('d', strtotime($daritanggal));
         $daritanggalm = date('m', strtotime($daritanggal));
         $daritanggaly = date('Y', strtotime($daritanggal));
@@ -2257,6 +2552,26 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['jabatan'] = $jabatan;
+        $_SESSION['pengikut'] = $pengikut;
+        $_SESSION['dari'] = $dari;
+        $_SESSION['ke'] = $ke;
+        $_SESSION['transportasi'] = $transportasi;
+        $_SESSION['selama'] = $selama;
+        $_SESSION['maksud'] = $maksud;
+        $_SESSION['atasbebananggaran'] = $atasbebananggaran;
+        $_SESSION['berangkatdari'] = $berangkatdari;
+        $_SESSION['tempatkedudukan'] = $tempatkedudukan;
+        $_SESSION['tempattujuan'] = $tempattujuan;
+        $_SESSION['kecamatankabupaten'] = $kecamatankabupaten;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -2349,6 +2664,7 @@ class Surat extends BaseController
         $nama = $this->request->getVar('nama');
         $tempat = $this->request->getVar('tempat');
         $ttl = $this->request->getVar('ttl');
+        $_SESSION['ttl'] = $ttl;
         $ttld = date('d', strtotime($ttl));
         $ttlm = date('m', strtotime($ttl));
         $ttly = date('Y', strtotime($ttl));
@@ -2378,6 +2694,7 @@ class Surat extends BaseController
         $nama2 = $this->request->getVar('nama2');
         $tempat2 = $this->request->getVar('tempat2');
         $ttl2 = $this->request->getVar('ttl2');
+        $_SESSION['ttl2'] = $ttl2;
         $ttl2d = date('d', strtotime($ttl2));
         $ttl2m = date('m', strtotime($ttl2));
         $ttl2y = date('Y', strtotime($ttl2));
@@ -2415,6 +2732,27 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['nama'] = $nama;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['kelamin'] = $kelamin;
+        $_SESSION['pekerjaan'] = $pekerjaan;
+        $_SESSION['nohp'] = $nohp;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['nama2'] = $nama2;
+        $_SESSION['tempat2'] = $tempat2;
+        $_SESSION['kelamin2'] = $kelamin2;
+        $_SESSION['pekerjaan2'] = $pekerjaan2;
+        $_SESSION['nohp2'] = $nohp2;
+        $_SESSION['rt2'] = $rt2;
+        $_SESSION['rw2'] = $rw2;
+        $_SESSION['dusun2'] = $dusun2;
+        $_SESSION['keterangan'] = $keterangan;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -2504,6 +2842,7 @@ class Surat extends BaseController
         $nama = $this->request->getVar('nama');
         $tempat = $this->request->getVar('tempat');
         $ttl = $this->request->getVar('ttl');
+        $_SESSION['ttl'] = $ttl;
         $ttld = date('d', strtotime($ttl));
         $ttlm = date('m', strtotime($ttl));
         $ttly = date('Y', strtotime($ttl));
@@ -2544,6 +2883,24 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['nik'] = $nik;
+        $_SESSION['kelamin'] = $kelamin;
+        $_SESSION['pekerjaan'] = $pekerjaan;
+        $_SESSION['agama'] = $agama;
+        $_SESSION['kwn'] = $kwn;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['keterangan'] = $keterangan;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -2681,6 +3038,26 @@ class Surat extends BaseController
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
 
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['ttl'] = $ttl;
+        $_SESSION['nik'] = $nik;
+        $_SESSION['kelamin'] = $kelamin;
+        $_SESSION['agama'] = $agama;
+        $_SESSION['status'] = $status;
+        $_SESSION['pekerjaan'] = $pekerjaan;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['namausaha'] = $namausaha;
+        $_SESSION['lokasiusaha'] = $lokasiusaha;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
+
         require_once '../vendor/autoload.php';
 
 
@@ -2786,9 +3163,11 @@ class Surat extends BaseController
             'Sat' => 'Sabtu'
         );
         $mulai = $this->request->getVar('mulai');
+        $_SESSION['mulai'] = $mulai;
         $harimulai = date('D', strtotime($mulai));
         $harimulai = $dayList[$harimulai];
         $selesai = $this->request->getVar('selesai');
+        $_SESSION['selesai'] = $selesai;
         $hariselesai = date('D', strtotime($selesai));
         $hariselesai = $dayList[$hariselesai];
         $tglmulai = date('d', strtotime($mulai));
@@ -2809,6 +3188,23 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['alamat'] = $alamat;
+        $_SESSION['jabatan'] = $jabatan;
+        $_SESSION['keterangan'] = $keterangan;
+        $_SESSION['harimulai'] = $harimulai;
+        $_SESSION['hariselesai'] = $hariselesai;
+        $_SESSION['tglmulai'] = $tglmulai;
+        $_SESSION['tglselesai'] = $tglselesai;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['jam'] = $jam;
+        $_SESSION['date'] = $date;
 
         require_once '../vendor/autoload.php';
 
@@ -2901,6 +3297,7 @@ class Surat extends BaseController
         $nama = $this->request->getVar('nama');
         $tempat = $this->request->getVar('tempat');
         $ttl = $this->request->getVar('ttl');
+        $_SESSION['ttl'] = $ttl;
         $ttld = date('d', strtotime($ttl));
         $ttlm = date('m', strtotime($ttl));
         $ttly = date('Y', strtotime($ttl));
@@ -2938,6 +3335,21 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['nama'] = $nama;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['kelamin'] = $kelamin;
+        $_SESSION['pekerjaan'] = $pekerjaan;
+        $_SESSION['rt'] = $rt;
+        $_SESSION['rw'] = $rw;
+        $_SESSION['dusun'] = $dusun;
+        $_SESSION['untuk'] = $untuk;
+        $_SESSION['date'] = $date;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
@@ -3014,6 +3426,7 @@ class Surat extends BaseController
         $nourut = $this->request->getVar('nourut');
         $kepada = $this->request->getVar('kepada');
         $tanggal = $this->request->getVar('tanggal');
+        $_SESSION['tanggal'] = $tanggal;
         date_default_timezone_set('Asia/Jakarta');
         $day = date('D', strtotime($tanggal));
         $dayList = array(
@@ -3057,6 +3470,17 @@ class Surat extends BaseController
         if ($ttdjabatan != 'Kepala Desa Tempuran') {
             $ttdjabatan = "An. Kepala Desa Tempuran, $ttdjabatan";
         }
+
+        $_SESSION['klasifikasi'] = $klasifikasi;
+        $_SESSION['nourut'] = $nourut;
+        $_SESSION['tahun'] = $tahun;
+        $_SESSION['kepada'] = $kepada;
+        $_SESSION['hari'] = $hari;
+        $_SESSION['jam'] = $jam;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['keperluan'] = $keperluan;
+        $_SESSION['ttdjabatan'] = $ttdjabatan;
+        $_SESSION['ttdnama'] = $ttdnama;
 
         require_once '../vendor/autoload.php';
 
